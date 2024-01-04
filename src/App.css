@@ -1,0 +1,57 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {   /*global*/
+  margin: 0;
+  background: linear-gradient(to right, #00ffaa, #ff9900); /*background color, gradient*/
+  
+}
+
+.calculator-grid {
+  display: grid;
+  margin-top: 2rem;
+  justify-content: center; /*centers calculator to the page*/
+  grid-template-columns: repeat(4,6rem); /*using grid template, indicating amount and size of columns*/
+  grid-template-rows: minmax(7rem,auto) repeat(5,6rem); /*for rows*/
+}
+
+.calculator-grid > button { /*for all buttons in calculator grid: '>' selects all children elements 'button' in the class 'calculator-grid*/
+  cursor: pointer; /*when hovering, shows pointer*/
+  font-size: 2rem;
+  /*border: 3px solid black;*/     /*changes color of the border around button*/
+  outline: none;
+  background-color: rgba(255,255,255,0.80);       
+
+}
+
+.calculator-grid > button:focus, /*when tabbing*/
+.calculator-grid > button:hover {
+  background-color: rgba(255,255,255,0.95);  /*** when hovering over a button, makes it more opaque ***/
+}
+
+.two-wide {    /*for the wide buttons: AC, DEL*/
+  grid-column: span 2;
+}
+
+.calculator-display-screen {
+  grid-column: 1/-1; 
+  background-color: rgba(0,0,0,.75); /*3 first parameters are color, last is opacity (0-1)*/
+  display: flex; /*display screen will get more rows as required*/
+  flex-direction: column; /*makes prev operand and curr operand stack on top of eachother*/
+  align-items: flex-end; /*aligns them to the right end*/
+  justify-content: space-around; /* items are evenly distributed within the alignment container along the main axis*/
+  padding: 0.75rem; /*adds padding around text*/
+  word-wrap: break-word; /*allows words to be broken into next line*/
+  word-break: break-all; /*break word at any character*/
+}
+
+.calculator-display-screen .previous-operand {
+  color: rgba(255,255,255,0.70)
+}
+
+.calculator-display-screen .current-operand {
+  color: rgba(255,255,255,1);
+  font-size: 2.5rem;
+
+}
